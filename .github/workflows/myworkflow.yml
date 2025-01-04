@@ -42,8 +42,8 @@ jobs:
     # - name: Terraform Apply
     #   run: terraform -chdir=terraform apply -auto-approve
 
-    # - name: Deploy to minikube
-    #   run: kubectl wait --for=condition=ready pod -l app=mock-web-app
+    - name: Deploy to minikube
+      run: kubectl wait --for=condition=ready pod -l app=mock-web-app
 
     - name: check pods
       run: kubectl get pods -A
