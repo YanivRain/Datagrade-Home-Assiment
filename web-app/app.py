@@ -22,7 +22,6 @@ def health_check():
         conn.close()
         return jsonify({"status": "healthy", "db_connection": "successful"}), 200
     except Exception as e:
-        return jsonify({"status": "notgood", "db_connection": "Banana"}), 200
         return jsonify({"status": "unhealthy", "error": str(e)}), 500
 
 if __name__ == '__main__':
