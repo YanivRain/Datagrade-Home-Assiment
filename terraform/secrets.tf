@@ -2,7 +2,7 @@ provider "kubernetes" {
   config_path = "~/.kube/config"
 }
 
-resource "kubernetes_secret" "example" {
+resource "kubernetes_secret" "db_secrets" {
   metadata {
     name      = "db-credentials"
     namespace = "default"

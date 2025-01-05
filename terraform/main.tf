@@ -4,7 +4,7 @@ provider "aws" {
 
 provider "random" {}
 
-resource "random_password" "db_password"{
+resource "random_password" "db_password" {
   length           = 24
   override_special = "!#$&*()-=+[]{}<>:?"
 }
