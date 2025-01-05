@@ -6,7 +6,6 @@ provider "random" {}
 
 resource "random_password" "db_password"{
   length           = 24
-  special          = true  # by default
   override_special = "!#$&*()-=+[]{}<>:?"
 }
 
@@ -22,5 +21,5 @@ resource "aws_db_instance" "postgres" {
   parameter_group_name = "default.postgres16"
   skip_final_snapshot  = true
   publicly_accessible  = true
-  vpc_security_group_ids = [aws_security_group.db_access.id]
+  # vpc_security_group_ids = [aws_security_group.db_access.id]
 }

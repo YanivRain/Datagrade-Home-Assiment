@@ -1,5 +1,5 @@
 provider "kubernetes" {
-  config_path = "~/.kube/config" # Adjust based on your kubeconfig location
+  config_path = "~/.kube/config"
 }
 
 resource "kubernetes_secret" "example" {
