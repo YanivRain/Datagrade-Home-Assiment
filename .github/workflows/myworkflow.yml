@@ -16,34 +16,23 @@ jobs:
     - name: Start minikube
       uses: medyagh/setup-minikube@latest
 
-    - name: Try the cluster!
-      run: kubectl get pods -A
-
-    - name: Build image
+    - name: Build web-app image
       run: minikube image build -t mock-web-app:latest web-app
 
-    - name: Deploy to minikube
+    - name: Deploy web-app to minikube
       run: kubectl apply -f k8s/deployment.yaml
 
-    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
 
-    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform -chdir=terraform init
 
-    # Generates an execution plan for Terraform
-    - name: Terraform Plan
-      run: terraform -chdir=terraform plan
-
-      # On push to "main", build or change infrastructure according to Terraform configuration files
-      # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
       run: terraform -chdir=terraform apply -auto-approve
 
-    - name: Deploy to minikube
+    - name: Check web-app
       run: kubectl wait --for=condition=ready pod -l app=mock-web-app
 
-    - name: check pods
-      run: kubectl get pods -A
+    - name: Check services
+      run: kubectl get service
