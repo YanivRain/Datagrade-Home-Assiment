@@ -36,3 +36,6 @@ jobs:
 
     - name: Check services
       run: kubectl get service
+
+    - name: Terraform Cleanup
+      run: terraform -chdir=terraform destroy -auto-approve
