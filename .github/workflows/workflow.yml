@@ -20,7 +20,7 @@ jobs:
       run: minikube image build -t mock-web-app:latest web-app
 
     - name: Deploy web-app to minikube
-      run: kubectl apply -f k8s/deployment.yaml
+      run: kubectl apply -f kubernetes/deployment.yaml
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
