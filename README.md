@@ -10,3 +10,6 @@ This repository contains an implementation of a CI/CD pipeline for deploying a w
 - Secure storage of database credentials in AWS Secrets Manager.
 - Deployment of a web application within a Minikube cluster.
 - Health checks for application readiness, verifying database connectivity.
+
+
+test
